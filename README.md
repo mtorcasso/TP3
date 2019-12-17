@@ -59,4 +59,17 @@ Más alla de la periodicidad de las tareas del ejemplo pasado, la función vTask
 La implementación correcta es con vTaskDelayUntil, en vez de usar como referencia cada llamada a vTaskDelay, usa los ticks, de esta forma la referencia no es cambiante sino que es única.
 
 ## Ejemplo 6
+En este ejemplo se declaran 2 tareas, una periódica y una no periódica con dos instancias. La periódica tiene prioridad mayor por lo que es la primera en ejecutarse, luego entra en un estado de bloqueo que permite realizar ambas instancias de la tarea no periódica. Cuando finaliza el delay bloqueante de la periódica, el scheduler vuelve a darle los recursos.
+![Diagrama temporal Ej 6](link)
+
+## Ejemplo 7
+
+
+## Ejemplo 8
+En el ejemplo 8 se declaran dos tareas, la primera con mayor priodidad que la segunda, por lo tatnto será la primera en ejecutarse. Sin embargo, luego de finalizar su trabajo esta llama a la función vTaskPrioritySet. Como su nombre lo indica, tiene la capacidad de cambiarle la prioridad a una tarea. Lo que se hace es subirle la prioridad a la tarea 2, esto genera que es scheduler le provea el tiempo de procesamiento a la segunda tarea, mientras que dentro de esta, luego de completar su cometido decrementa su prioridad para volver a la tarea 1.
+
+## Ejemplo 9
+
+
+## Ejemplo 7
 
