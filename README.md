@@ -69,7 +69,9 @@ En este ejemplo se declaran 2 tareas, una periódica y una no periódica con dos
 En el ejemplo 8 se declaran dos tareas, la primera con mayor priodidad que la segunda, por lo tatnto será la primera en ejecutarse. Sin embargo, luego de finalizar su trabajo esta llama a la función vTaskPrioritySet. Como su nombre lo indica, tiene la capacidad de cambiarle la prioridad a una tarea. Lo que se hace es subirle la prioridad a la tarea 2, esto genera que es scheduler le provea el tiempo de procesamiento a la segunda tarea, mientras que dentro de esta, luego de completar su cometido decrementa su prioridad para volver a la tarea 1.
 
 ## Ejemplo 9
+Aquí se muestra como se puede eliminar una tarea fácilmente. Se crea la tarea 1 en el main y se llama al scheduler para que realice su trabajo. Dentro de la tarea uno, luego de encender el LED, se crea la segunda task y se le asigna una prioridad mayor por lo que esta pasa a estar ejecutandose. Una vez cumplida su función, la segunda tarea se elimina a si misma con vTaskDelete y se retorna a la original.
 
+# Documentación de ejemplos 10 a 16
 
-## Ejemplo 7
+## Ejemplo 10
 
