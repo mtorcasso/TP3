@@ -2,7 +2,7 @@
 
 ## Secuencia de funciones invocadas en Example 1 - Creating Tasks
 
-Como se ve en las siguientes figuras, las funciones invocadas son vTask, vTask2, prvSetupHardware, DEBUGOUT, xTaskCreate y vTaskScheduler.
+Las funciones invocadas son vTask, vTask2, prvSetupHardware, DEBUGOUT, xTaskCreate y vTaskScheduler.
 
 ### vTask1 y vTask2
 Estas funciones que se encuentran en freetos_examples_1_to_9.c tienen el fin de declarar cada una de las tareas que se utilizarán a lo largo del programa. Ambas constan de apagar o prender un LED, imprimir por puerto serie cual tarea se está ejecutando y permanecer dentro de ella hasta que el tiempo de un delay finalice.
