@@ -83,3 +83,16 @@ Se hace uso de un semáforo binario para desbloquear una tarea mediante una inte
 ![Diagrama temporal Ej 12](link)
 
 ## Ejemplo 13
+Se continua el ejemplo anterior cambiando el semáforo binario por un semáoro contador. En vez de dar el semáforo una vez, se lo da tres veces continuas. Por lo tanto, cada una de las tres veces que se da el semáforo se ejecuta la tarea Handler. Una vez que se realizó por tercera vez, vuelve a la tarea periódica y luego al estado de espera.
+
+## Ejemplo 14
+Una tarea periódica es creada y envía 5 números a una cola cada 200 milisegundos, una vez que los 5 valores fueron transmitidos se genera una interrupción por software. Esta interrupción llama a la tarea receptora de la cola repetidamente hasta que se vacíe. Una vez que sucedió todo esto se espera hasta que la tarea periódica vuelva a activarse.
+![Diagrama temporal Ej 14](link)
+
+## Ejemplo 15
+Se crea una nueva versión de vPrintString llamada prvNewPrintString. Estas dos funcionan de la misma manera, con la diferencia que la nueva utiliza un mutex para que dos cadenas no se interrumpan entre si, de esta manera mientras se está escribiendo el string, otra tarea no podrá tomar el mutex e imprimir pisando lo previo.
+![Diagrama temporal Ej 15](link)
+
+## Ejemplo 16
+Esta es otra implementación para imprimir un string haciendo uso de un gatekeeper que será el único con acceso al standard output. Cada vez que una tarea quiera escribir un mensaje no llamará a una función de impresión sino que al gatekeeper, este guardará dicho string en una cola y luego lo imprimirá. El gatekeeper estará generalmente bloqueado y en la espera a que arrive un mensaje.
+
