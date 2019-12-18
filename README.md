@@ -62,9 +62,6 @@ La implementación correcta es con vTaskDelayUntil, en vez de usar como referenc
 En este ejemplo se declaran 2 tareas, una periódica y una no periódica con dos instancias. La periódica tiene prioridad mayor por lo que es la primera en ejecutarse, luego entra en un estado de bloqueo que permite realizar ambas instancias de la tarea no periódica. Cuando finaliza el delay bloqueante de la periódica, el scheduler vuelve a darle los recursos.
 ![Diagrama temporal Ej 6](link)
 
-## Ejemplo 7
-
-
 ## Ejemplo 8
 En el ejemplo 8 se declaran dos tareas, la primera con mayor priodidad que la segunda, por lo tatnto será la primera en ejecutarse. Sin embargo, luego de finalizar su trabajo esta llama a la función vTaskPrioritySet. Como su nombre lo indica, tiene la capacidad de cambiarle la prioridad a una tarea. Lo que se hace es subirle la prioridad a la tarea 2, esto genera que es scheduler le provea el tiempo de procesamiento a la segunda tarea, mientras que dentro de esta, luego de completar su cometido decrementa su prioridad para volver a la tarea 1.
 
@@ -74,4 +71,15 @@ Aquí se muestra como se puede eliminar una tarea fácilmente. Se crea la tarea 
 # Documentación de ejemplos 10 a 16
 
 ## Ejemplo 10
+Este ejemplo muestra la creación de una cola y como se envía y recibe información por ella utilizando varias tareas. La cola se la crea para contener datos del tipo long. La prioridad de las tareas que envían información son menores a la de la que recibe, por lo que cada vez que se le transmita un dato a la cola, la tarea de recepción se desbloqueará y hará uso de los recursos del sistema, es decir, nunca habrá más de un elemento en la cola.
+![Diagrama temporal Ej 10](link)
 
+## Ejemplo 11
+En este caso las prioridades son al revés que en el ejemplo anterior, las tareas que envían información tienen una prioridad mayor, por lo que la tarea receptora no se activará hasta que la cola no esté llena, removiendo la información que se ubique en la primera ubicación y dejando un lugar para que las emisoras transmitan un nuevo dato. Es decir, una vez que la cola se llene, estará siempre de esta manera.
+![Diagrama temporal Ej 11](link)
+
+## Ejemplo 12
+Se hace uso de un semáforo binario para desbloquear una tarea mediante una interrupción. Cada 500 ms se ingresa a una tarea periódica, esta activa por software una interrupción, la cual cumple la función de darle el semáforo a la tarea Handler, una vez que esta llega a su estado de bloqueo, vuelve a la periódica para luego volver a la espera de que se cumplan los 500 ms.
+![Diagrama temporal Ej 12](link)
+
+## Ejemplo 13
